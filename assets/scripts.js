@@ -10,7 +10,18 @@ window.Modernizr=function(a,b,c){function G(){}function F(a,b){var c=a.charAt(0)
   
   // the constructor that will do all the work
   function Zoomer() {
-    this.scrollY = 0;
+    // position of vertical scroll
+    this.scrolled = 0;
+    // zero-based number of sections
+    this.levels = 4;
+    
+    this.levelGuide = {
+      '#web-dev' : 0,
+      '#front-end' : 1,
+      '#css' : 2,
+      '#css3' : 3,
+      '#transforms' : 4
+    };
   }
   
   // enables constructor to be used within event listener
@@ -23,14 +34,86 @@ window.Modernizr=function(a,b,c){function G(){}function F(a,b){var c=a.charAt(0)
   
   // triggered every time window scrolls
   Zoomer.prototype.scroll = function( event ) {
+    // normalize scroll value from 0 to 1
+    this.scrolled = window.pageYOffset / ( this.docHeight - window.innerHeight );
     
+    var scale = Math.pow( 3, this.scrolled * this.levels ),
+        transformValue = 'scale('+scale+')';
+    
+    this.content.style.WebkitTransform = transformValue;
+    this.content.style.MozTransform = transformValue;
+    this.content.style.OTransform = transformValue;
+    this.content.style.transform = transformValue;
+    
+  };
+  
+  // triggered on nav click
+  Zoomer.prototype.click = function( event ) {
+    //  get scroll based on href of clicked nav item
+    var hash = event.target.hash || event.target.parentNode.hash;
+    
+    if ( Modernizr.csstransitions ) {
+      this.content.className = 'transitions-enabled';
+      this.content.addEventListener( 'webkitTransitionEnd', this, false );
+      this.content.addEventListener( 'oTransitionEnd', this, false );
+      this.content.addEventListener( 'transitionend', this, false );
+    }
+    
+    this.scrollFromHash( hash );
+    event.preventDefault();
+  };
+  
+  Zoomer.prototype.scrollFromHash = function( hash ) {
+    var targetLevel = this.levelGuide[ hash ];
+    // proceed only if hash matches a level
+    if ( targetLevel === undefined ) {
+      return;
+    }
+    var scrollY = targetLevel / this.levels;
+    // adjust for scrollable height
+    scrollY = scrollY * ( this.docHeight - window.innerHeight );
+    // set hash in location URL
+    window.location.hash = hash;
+    // set scroll position, Zoomer.scroll will take care of the rest
+    window.scrollTo( 0, scrollY );
+  };
+
+  Zoomer.prototype.webkitTransitionEnd = function( event ) {
+    this.transitionEnded( event );
+  };
+  Zoomer.prototype.transitionend = function( event ) {
+    this.transitionEnded( event );
+  };
+  Zoomer.prototype.oTransitionEnd = function( event ) {
+    this.transitionEnded( event );
+  };
+
+  // disables transition after nav click
+  Zoomer.prototype.transitionEnded = function( event ) {
+    this.content.className = '';
+    this.content.removeEventListener( 'webkitTransitionEnd', this, false );
+    this.content.removeEventListener( 'transitionend', this, false );
+    this.content.removeEventListener( 'oTransitionEnd', this, false );
   };
 
   function init() {
     // init Zoomer constructor
     var ZUI = new Zoomer();
+    // get height of page
+    ZUI.docHeight = document.documentElement.offsetHeight;
+    ZUI.content = document.getElementById('content');
     // bind Zoomer to scroll event
     window.addEventListener( 'scroll', ZUI, false);
+    
+    if ( window.location.hash ) {
+      ZUI.scrollFromHash( window.location.hash );
+    }
+    
+    // bind Zoomer.click to nav item clicks
+    var navItems = document.querySelectorAll('#nav a');
+    for (var i=0, len = navItems.length; i < len; i++) {
+      navItems[i].addEventListener( 'click', ZUI, false );
+    }
   }
   
   window.addEventListener( 'load', init, false );

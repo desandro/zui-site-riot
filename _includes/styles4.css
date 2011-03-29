@@ -1,0 +1,9 @@
+
+    /* step 4 */
+    
+    .csstransitions #content.transitions-enabled {
+      -webkit-transition: -webkit-transform 1s;
+         -moz-transition:    -moz-transform 1s;
+           -o-transition:      -o-transform 1s;
+              transition:         transform 1s;
+    }

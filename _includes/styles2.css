@@ -17,6 +17,8 @@
 
     .csstransforms #content {
       position: absolute;
+      width: 900px;
+      height: 540px;
     }
 
     .csstransforms section {
