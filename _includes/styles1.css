@@ -134,8 +134,13 @@
     }
 
     #nav li a:hover {
-      background: #FEE;
-      color: red;
+      background: red;
+      color: white;
+    }
+    
+    #nav li.current a {
+      background: blue;
+      color: white;
     }
 
     /* Section-specific layout */

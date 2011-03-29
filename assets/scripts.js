@@ -45,6 +45,18 @@ window.Modernizr=function(a,b,c){function G(){}function F(a,b){var c=a.charAt(0)
     this.content.style.OTransform = transformValue;
     this.content.style.transform = transformValue;
     
+    // change current selection on nav
+    this.currentLevel = Math.round( this.scrolled * this.levels );
+
+    if ( this.currentLevel !== this.previousLevel ) {
+      var currentNavItem = this.nav.querySelector('.current');
+      if ( currentNavItem ) {
+        currentNavItem.className = '';
+      }
+      this.navItems[ this.currentLevel ].className = 'current';
+      this.previousLevel = this.currentLevel;
+    }
+    
   };
   
   // triggered on nav click
@@ -102,6 +114,8 @@ window.Modernizr=function(a,b,c){function G(){}function F(a,b){var c=a.charAt(0)
     // get height of page
     ZUI.docHeight = document.documentElement.offsetHeight;
     ZUI.content = document.getElementById('content');
+    ZUI.nav = document.getElementById('nav');
+    ZUI.navItems = ZUI.nav.querySelectorAll('li');
     // bind Zoomer to scroll event
     window.addEventListener( 'scroll', ZUI, false);
     
