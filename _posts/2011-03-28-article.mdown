@@ -74,13 +74,20 @@ Web development
           Rotation
 
 
-## Layout
+## Basic layout
 
 When laying out the sections of this page, we need to consider how each section will fit inside one another. I've chosen to use a ratio of 3:1 for the proportion between the current section and its subsequent section. The area of each section will be 960px x 540px so it fits within most browser windows. Subsequent sections will have dimensions one-third the full size, 320px x 180px.
 
 The basic markup of the site so far:
 
     <div id="wrap">
+      <ul id="nav">
+        <li><a href="#web-dev">Web development</a></li>
+        <li><a href="#front-end">Front-end development</a></li>
+        <li><a href="#css">CSS</a></li>
+        <li><a href="#css3">CSS3</a></li>
+        <li><a href="#transforms">Transforms</a></li>
+      </ul>
       <div id="container">
         <section id="web-dev">...</section>
         <section id="front-end">...</section>
@@ -90,5 +97,9 @@ The basic markup of the site so far:
       </div>
     </div>
 
-The first draft of the site has the content laid out in the typical vertical pattern. This version is important to consider as this is what we can expect to provide to browsers that do not support CSS transforms or have JavaScript disabled.
+The first draft of the site has the content laid out in the typical vertical pattern. This version is important to consider as this is what we can expect to provide to browsers that do not support CSS transforms or have JavaScript disabled. The rest of the effects will be built with progressive enhancement.  Users with less-capable browsers will still be able to consume the content.
 
+## Adding transforms
+
+With the basic layout established, we can now start adding CSS transforms. Before we jump in with the CSS, let's add Modernizr so we have more control over how browsers will inherit their styles.  I opted to use a custom build from the Modernizr 2.0 beta preview, that only tests for CSS 2D transforms and CSS transitions 
+(http://modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp).
