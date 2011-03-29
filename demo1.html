@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>demo1</title>
+
+  <script src="http://use.typekit.com/bqa1ehi.js"></script> 
+  <script>try{Typekit.load();}catch(e){}</script>
+
+  <style media="screen">
+    body {
+      font-family: 'Proxima Nova','proxima-nova-1','proxima-nova-2', 'Helvetica Neue', Arial, sans-serif;
+    }
+    
+    section, header {
+      display: block;
+    }
+    
+    #wrap {
+      width: 900px;
+      margin: 20px auto;
+/*      background: hsla( 0, 100%, 50%, 0.05 );*/
+    }
+    
+    section {
+      width: 900px;
+      height: 540px;
+      margin-bottom: 80px;
+/*      background: hsla( 240, 100%, 30%, 0.1 );*/
+      position: relative;
+      z-index: 1;
+    }
+    
+    #container {
+      position: relative;
+    }
+    
+    #grid {
+      width: 900px;
+      height: 540px;
+      position: absolute;
+      display: none;
+    }
+    
+    #grid div {
+      float: left;
+      width: 99px;
+      height: 59px;
+      border-left: 1px solid #DDD;
+      border-bottom: 1px solid #DDD;
+    }
+    
+    #grid .target {
+      width: 300px;
+      height: 180px;
+      background: hsla( 0, 100%, 50%, 0.2 );
+      position: absolute;
+      left: 300px;
+      top: 180px;
+    }
+
+    h1, h2, p {
+      margin: 0 0 15px;
+    }
+
+    section header {
+      padding: 0 10px;
+    }
+    
+    section h2 {
+      font-size: 28px;
+      line-height: 30px;
+    }
+
+    p {
+      background: hsla( 0, 0%, 0%, 0.3 );
+      height: 15px;
+    }
+    
+    .w3, .w6 { 
+      position: absolute;
+      margin: 0 10px;
+      padding-top: 15px;
+    }
+    
+    .w3 { width: 280px; }
+    .w3.box { width: 250px; }
+    
+    .h3.box { height: 150px; }
+    .h3.box .img { line-height: 150px; }
+    
+    .h6.box { height: 330px; }
+    .h6.box .img { line-height: 330px; }
+    
+    .w6 { width: 580px; }
+    .w6.box { width: 550px; }
+    
+    .x3 { left: 300px; }
+    .x6 { left: 600px; }
+    
+    .y3 { top: 180px; }
+    .y6 { top: 360px; }
+    
+    .box {
+      padding-top: 0;
+      border: 5px solid;
+      padding: 10px;
+    }
+    
+    
+    
+    .img {
+      background: hsla( 0, 0%, 0%, 0.3 );
+      color: white;
+      text-align: center;
+      height: 100%;
+      font-size: 100px;
+    }
+    
+    #web-dev h1 {
+      font-size: 105px;
+      font-weight: 600;
+      line-height: 105px;
+    }
+    
+    #front-end header,
+    #css header,
+    #css3 header { padding-top: 0;}
+    
+    #front-end h1 {
+      line-height: 85px;
+      font-size: 92px;
+    }
+    
+    #css header,
+    #css3 header { padding: 0;}
+
+    #css h1 {
+      font-size: 150px;
+      line-height: 180px;
+    }
+    
+    #css3 h1 {
+      font-size: 110px;
+      line-height: 105px;
+    }
+
+    #transforms h1 {
+      font-size: 160px;
+      line-height: 180px;
+    }
+    
+    #web-dev { color: hsl( 0, 90%, 45% ); }
+    #web-dev p, #web-dev .img { background: hsla( 0, 90%, 45%, 0.3 ); }
+
+    #front-end { color: hsl( 72, 90%, 40% ); }
+    #front-end p, #front-end .img { background: hsla( 72, 90%, 40%, 0.3 ); }
+    
+    #css { color: hsl( 144, 90%, 45% ); }
+    #css p, #css .img { background: hsla( 144, 90%, 45%, 0.3 ); }
+    
+    #css3 { color: hsl( 216, 90%, 45% ); }
+    #css3 p, #css3 .img { background: hsla( 216, 90%, 45%, 0.3 ); }
+    
+    #transforms { color: hsl( 288, 90%, 45% ); }
+    #transforms p, #transforms .img { background: hsla( 288, 90%, 45%, 0.3 ); }
+    
+  </style>
+
+</head>
+<body>
+
+  <div id="wrap">
+    
+    <div id="container">
+      
+      <div id="grid">
+        <div class="target"></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+      
+      <section id="web-dev">
+        <header>
+          <h1>Web development</h1>
+          <p></p>
+          <p></p>
+        </header>
+        
+        <div class="box w3 y3">
+          <h2>CMS Integration</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="w6 x3 y6">
+          <h2>Server-side scripting</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="box w3 h3 y3 x6">
+          <div class="img">&#x2606;</div>
+        </div>
+        
+      </section>
+      
+      <section id="front-end">
+        <header class="w6">
+          <h1>Front-end development</h1>
+        </header>
+        
+        <div class="w3 x6">
+          <h2>HTML</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="w3 y3">
+          <h2>JavaScript</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p> 
+          <p></p> 
+          <p></p> 
+        </div>
+        
+        <div class="box w6 x3 y6 h3">
+          <div class="img">&#x2606;</div>
+        </div>
+        
+      </section>
+
+      <section id="css">
+        <header class="w3">
+          <h1>CSS</h1>
+        </header>
+        
+        <div class="w6 x3">
+          <h2>Better performance</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="w6 x3 y6">
+          <h2>Web Standards</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+          
+        <div class="box w3 y3 h6">
+          <div class="img">&#x2606;</div>
+        </div>
+        
+        <div class="box w3 x6 y3 h3">
+          <div class="img">&#x2606;</div>
+        </div>
+        
+      </section>
+
+      <section id="css3">
+        <header class="x3 w3">
+          <h1>CSS3</h1>
+          <p></p>
+          <p></p>
+        </header>
+        
+        <div class="box w3 h3">
+          <div class="img">&#x2606;</div>
+        </div>
+        
+        <div class="box w3 x6 h3">
+          <div class="img">&#x2606;</div>
+        </div>
+        
+        <div class="w3 y3">
+          <h2>Transitions</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="w3 y3 x6">
+          <h2>Animation</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="w6 y6" style="margin-top: 15px;">
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+      </section>
+
+      <section id="transforms">
+        <header>
+          <h1>Transforms</h1>
+        </header>
+        
+        <div class="w3 y3">
+          <h2>Translate</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="w3 y6 x3">
+          <h2>Scale</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="w3 y3 x6">
+          <h2>Rotate</h2>
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        
+        <div class="box w3 h3 y3 x3">
+          <div class="img">&#x2606;</div>
+        </div>
+        
+        <div class="box w3 h3 y6 x6">
+          <div class="img">&#x2606;</div>
+        </div>
+        
+      </section>
+      
+    </div> <!-- #container -->
+    
+  </div> <!-- #wrap -->
+
+</body>
+</html>
