@@ -1,0 +1,14 @@
+
+
+    /* step 3 */
+    
+    /* set arbitrary height on proxy scroller */
+    .csstransforms #scroller { height: 4000px; }
+    
+    /* prevent content from scrolling */
+    #wrap { 
+      position: fixed; 
+      width: 100%;
+    }
+    
+    

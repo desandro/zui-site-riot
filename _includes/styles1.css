@@ -8,9 +8,15 @@
     }
 
     #wrap {
+/*      width: 900px;
+      margin: 20px auto;*/
+    /*      background: hsla( 0, 100%, 50%, 0.05 );*/
+    }
+
+    #container {
+      position: relative;
       width: 900px;
       margin: 20px auto;
-    /*      background: hsla( 0, 100%, 50%, 0.05 );*/
     }
 
     section {
@@ -20,10 +26,6 @@
     /*      background: hsla( 240, 100%, 30%, 0.1 );*/
       position: relative;
       z-index: 1;
-    }
-
-    #container {
-      position: relative;
     }
 
     #grid {
@@ -110,8 +112,11 @@
 
     #nav {
       padding: 0;
-      margin: 0 0 20px 10px;
+      margin: 0 auto 20px;
       overflow: auto;
+      width: 880px;
+      position: relative;
+      z-index: 100;
     }
 
     #nav li {

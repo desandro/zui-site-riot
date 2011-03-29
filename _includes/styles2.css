@@ -1,54 +1,52 @@
 
     /* step 2 */
 
-    body {
-      overflow: hidden;
-    }
-
-    #wrap {
-      width: 900px;
-      height: 540px;
-      position: relative;
+/*    #wrap {
+      position: fixed;
+      width: 100%;
     }
 
     #container {
+    }
+    
+    #content {
       width: 900px;
       height: 540px;
+      -webkit-transform: scale(3);
+    }*/
+
+    .csstransforms #content {
       position: absolute;
     }
 
-    section {
+    .csstransforms section {
       position: absolute;
     }
 
-    #front-end {
+    .csstransforms #front-end {
       -webkit-transform: scale(0.3333);
          -moz-transform: scale(0.3333);
-          -ms-transform: scale(0.3333);
            -o-transform: scale(0.3333);
               transform: scale(0.3333);
     }
 
-    #css {
+    .csstransforms #css {
       -webkit-transform: scale(0.1111);
          -moz-transform: scale(0.1111);
-          -ms-transform: scale(0.1111);
            -o-transform: scale(0.1111);
               transform: scale(0.1111);
     }
 
-    #css3 {
+    .csstransforms #css3 {
       -webkit-transform: scale(0.037);
          -moz-transform: scale(0.037);
-          -ms-transform: scale(0.037);
            -o-transform: scale(0.037);
               transform: scale(0.037);
     }
 
-    #transforms {
+    .csstransforms #transforms {
       -webkit-transform: scale(0.0123456);
          -moz-transform: scale(0.0123456);
-          -ms-transform: scale(0.0123456);
            -o-transform: scale(0.0123456);
               transform: scale(0.0123456);
     }
