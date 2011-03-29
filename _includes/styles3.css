@@ -6,7 +6,7 @@
     .csstransforms #scroller { height: 4000px; }
     
     /* prevent content from scrolling */
-    #wrap { 
+    .csstransforms #wrap { 
       position: fixed; 
       width: 100%;
     }

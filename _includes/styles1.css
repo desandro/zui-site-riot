@@ -1,29 +1,24 @@
 
     body {
       font-family: 'Proxima Nova','proxima-nova-1','proxima-nova-2', 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
     section, header {
       display: block;
     }
 
-    #wrap {
-/*      width: 900px;
-      margin: 20px auto;*/
-    /*      background: hsla( 0, 100%, 50%, 0.05 );*/
-    }
-
     #container {
       position: relative;
       width: 900px;
-      margin: 20px auto;
+      margin: 10px auto;
     }
 
     section {
       width: 900px;
       height: 540px;
       margin-bottom: 80px;
-    /*      background: hsla( 240, 100%, 30%, 0.1 );*/
       position: relative;
       z-index: 1;
     }
@@ -112,7 +107,7 @@
 
     #nav {
       padding: 0;
-      margin: 0 auto 20px;
+      margin: 0 auto 10px;
       overflow: auto;
       width: 880px;
       position: relative;
@@ -129,6 +124,7 @@
       text-decoration: none;
       display: block;
       background: #EEF;
+      background: hsla( 0, 0%, 90%, 0.85 );
       color: blue;
       padding: 8px 15px;
     }
