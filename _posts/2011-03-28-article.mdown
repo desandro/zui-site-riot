@@ -240,7 +240,7 @@ The basic idea is that we are going to hijack the scroll event and do something 
 
     Zoomer.prototype.scroll = function( event ) {
       // normalize scroll value from 0 to 1
-      this.scrolled = window.pageYOffset / ( this.docHeight - window.innerHeight );
+      this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
     };
 
 We can take that `scrolled` value and use it for our scale value to zoom into the content.  We can use the same math we applied with the CSS above, except we are now using a percentage.  The percentage goes from 0 to 1, so we need to multiply it by the zero-based number of sections.
@@ -251,7 +251,7 @@ This value can be applied as a CSS transform
 
     Zoomer.prototype.scroll = function( event ) {
       // normalize scroll value from 0 to 1
-      this.scrolled = window.pageYOffset / ( this.docHeight - window.innerHeight );
+      this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
 
       var scale = Math.pow( 3, this.scrolled * this.levels ),
           transformValue = 'scale('+scale+')';

@@ -35,7 +35,7 @@ window.Modernizr=function(a,b,c){function G(){}function F(a,b){var c=a.charAt(0)
   // triggered every time window scrolls
   Zoomer.prototype.scroll = function( event ) {
     // normalize scroll value from 0 to 1
-    this.scrolled = window.pageYOffset / ( this.docHeight - window.innerHeight );
+    this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
     
     var scale = Math.pow( 3, this.scrolled * this.levels ),
         transformValue = 'scale('+scale+')';
