@@ -8,59 +8,19 @@ layout: article
 ZUI Site Riot
 =============
 
-Before releasing the site for BeerCamp at SXSW 2011, I had never even heard of a ZUI. When I started out brainstorming about what the site could be, I just wanted to make something that heavily involved CSS transforms. My idea was to create a landscape you could traverse with CSS 3D transforms. But considering only Safari supported CSS 3D transforms at the time, the layout would use a CSS 2D scale transforms to replicate the effect.
+We get it.  Design patterns are good.  Industry standard conventions help users.  This argument has been reinforced for years. But with every convention that we web designers adhere to, we lose a chance to change the game and innovate within our medium. With the BeerCamp at SXSW 2011 site, we at nclud recognized an ideal opportunity to bend some rules and try something new. I got the idea to leverage CSS transforms to reconfigure the typical vertically scrolling site, where you traversed it downwards into a site that you traversed _inwards_.
 
-As it so happens, what the BeerCamp site accomplished was not an entirely new concept. 
+The reaction was incredible. Over 2,500 tweets about the site for its user interaction just in the first couple weeks. People we not reacting to its message, or visual design, or the brand. They were excited about the way it worked.  Clearly, users enjoy innovative interfaces if they are executed well, even if its just for the sake of their ingenuity.
 
-Now with CSS3 transforms we have the delightful opportunity to experiment with innovative layouts and interfaces. While the paradigm of the vertical website will never fade away
+Now with CSS3 transforms supported in most major browsers, we have the delightful opportunity to experiment creating innovative layouts and interfaces. While the paradigm of the vertical website will continue to dominate the industry, there's a world of possibilities out there to explore. No longer are we shackled in our one-dimensional prisons, bound to the tyranny of vertically-scrolling sites.
+
+With the BeerCamp site, I chose to use a zoommable layout more as a spectacle and experiment than as a proper design convention. But that's not to say that zoomable interfaces have no merit. By placing one visual element inside another, the user can make the connection that the smaller item is a component of its parent.  You can make an immediate visual relationship between pieces of content.
 
 ---
 
 As a web designer, you are already well familiar with the concept of a GUI. But have you ever heard of a ZUI - zoomable user interface? The term might be new, but the zooming design pattern is a popular concept. You zoom using Google Maps, Photoshop, Illustrator. iOS and Android browsers are able to zoom into certain sections of websites.  
 
 ---
-
-Hear me, fellow developers! For too long have we been shackled in our one-dimensional prisons, bound to the tyranny of vertically-scrolling sites. How can we dare to "think outside the box" when we can barely conceive of a world that reaches beyond the fold of our closed realm?
-
-But now is not the time for despair, as I have glimpsed the future. A revolution is at hand and its name is CSS Transforms.
-
-When 
-
----
-
-We get it.  Design patterns are good.  Industry standard conventions help users.  This argument has been reinforced for years. But with every convention that we web designers adhere to, we lose a chance to change the game and innovate within our medium. With the BeerCamp at SXSW 2011 site, we at nclud recognized an ideal opportunity to bend some rules and try something new. I got the idea to leverage CSS transforms to reconfigure the typical vertically scrolling site, where you traversed it downwards into a site that you traversed _inwards_.
-
-The reaction was incredible. Over 2,500 tweets about the site for its user interaction just in the first couple weeks. People we not reacting to its message, or visual design, or the brand. They were excited about the way it worked.  Clearly, users enjoy innovative interfaces if they are executed well, even if its just for the sake of their ingenuity.
-
-
-
----
-
-
-
-With the BeerCamp site, we had an awesome opportunity to explore new possibilities of web design. As the majority of 
-
-
-
-Web developers
-
----
-
-The typical reaction to BeerCamp was comprised of two sentiments "Wow" and "Neat, buts its a gimmick." Let me 
-
----
-
-
-
----
-
-
-ZUI paradigm is well-suited for content that follows 
-
-
----
-
-With the BeerCamp site, I chose to use a zoommable layout more as a spectacle and experiment than as a proper design convention. But that's not to say that zoomable interfaces have no merit. 
 
 In the example we will build in this tutorial, the page details the services of a web development shop. The services listed range from the broad - general web development - to the specific - CSS3 transforms. With each advancing section, the content dives deeper into the subject,  getting more focused, and more technical. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections.  Placing these sections inside one another visually communicate the relationship between them.
 
