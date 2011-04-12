@@ -9,11 +9,18 @@ window.Modernizr=function(a,b,c){function G(){}function F(a,b){var c=a.charAt(0)
   }
   
   // the constructor that will do all the work
-  function Zoomer() {
+  function Zoomer( content, nav, navItems ) {
+    // keep track of DOM
+    this.content = content;
+    this.nav = nav;
+    this.navItems = navItems;
+    
     // position of vertical scroll
     this.scrolled = 0;
     // zero-based number of sections
     this.levels = 4;
+    // height of document
+    this.docHeight = document.documentElement.offsetHeight
     
     this.levelGuide = {
       '#web-dev' : 0,
@@ -109,13 +116,13 @@ window.Modernizr=function(a,b,c){function G(){}function F(a,b){var c=a.charAt(0)
   };
 
   function init() {
-    // init Zoomer constructor
-    var ZUI = new Zoomer();
-    // get height of page
-    ZUI.docHeight = document.documentElement.offsetHeight;
-    ZUI.content = document.getElementById('content');
-    ZUI.nav = document.getElementById('nav');
-    ZUI.navItems = ZUI.nav.querySelectorAll('li');
+    var content = document.getElementById('content'),
+        nav = document.getElementById('nav'),
+        navItems = nav.getElementsByTagName('li'),
+
+        // init Zoomer constructor
+        ZUI = new Zoomer( content, nav, navItems );
+
     // bind Zoomer to scroll event
     window.addEventListener( 'scroll', ZUI, false);
     
