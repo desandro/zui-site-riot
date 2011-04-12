@@ -1,0 +1,11 @@
+---
+layout: nil
+---
+
+{% include article-header.html %}
+
+  {% for post in site.posts %}
+    {{ post.content }}
+  {% endfor %}
+
+{% include article-footer.html %}
