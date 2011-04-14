@@ -5,7 +5,7 @@ layout: article
 
 ---
 
-As a web designer, you are already well familiar with the concept of a GUI. But have you ever heard of a ZUI - zoomable user interface? The term might be new, but the zooming design pattern is a popular concept. Its most literal form can be found in vector applications like Illustrator or 3D applications like Google Sketch-up, where zooming translates into getting closer in on smaller objects.
+As a web designer, you are already well familiar with the concept of a GUI. But have you ever heard of a ZUI - zoomable user interface? The term might be new, but the zooming design pattern is a popular concept. Zooming is directly related to manipulating scale - how the size of the interface elements compare with one another. Its most literal form can be found in vector applications like Illustrator or 3D applications like Google Sketch-up, where zooming translates into getting closer in on smaller objects.
 
 On the web, the most commonplace example is on map sites like Google Maps or Mapquest.  Google Maps was clever enough to integrate the scroll wheel with zoom.
 
@@ -13,4 +13,6 @@ Now in the age of mobile with iOS and Android browsers, zooming has been leverag
 
 Plenty of desktop application have zooming capabilities. Microsoft Word and Powerpoint both are able to increase the visible portion of interface. Zooming has been built into all modern web browser, enabling users to adjust websites to a comfortable size that they can read and interact with.
 
-Given all the examples of the zooming interaction, you can rest assure that building it into your web app will not be that revolutionary. Users might not expect it at first, but clearly, they have used zooming in some capacity in the past.
+Mac OS X has zooming built into its interface. Holding Control and scrolling will zoom the entire screen towards the cursor.
+
+Given all these examples, you can rest assure that building zooming into your web app will not be that revolutionary. Users might not expect it at first, but clearly, they have used zooming in some capacity in the past.
