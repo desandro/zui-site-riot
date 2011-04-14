@@ -5,9 +5,6 @@ layout: article
 
 ---
 
-ZUI Site Riot
-=============
-
 We get it.  Design patterns are good.  Industry standard conventions help users.  This argument has been reinforced for years. But with every convention that we web designers adhere to, we lose a chance to change the game and innovate within our medium. With the site for BeerCamp at SXSW 2011 ([2011.beercamp.com](http://2011.beercamp.com)), we at nclud recognized an ideal opportunity to bend some rules and try something new. I got the idea to leverage CSS transforms to reconfigure the typical vertically scrolling site, where you traversed it downwards into a site that you traversed _inwards_.
 
 The reaction was incredible. Over 2,500 tweets about the site for its user interaction just in the first couple weeks. People we not reacting to its message, or visual design, or the brand. They were excited about the way it worked.  Clearly, users enjoy innovative interfaces if they are executed well, even if its just for the sake of their ingenuity.
@@ -16,19 +13,7 @@ Now with CSS3 transforms supported in most major browsers, we have the delightfu
 
 With the BeerCamp site, I chose to use a zoommable layout more as a spectacle and experiment than as a proper design convention. But that's not to say that zoomable interfaces have no merit. By placing one visual element inside another, the user can make the connection that the smaller item is a component of its parent.  You can make an immediate visual relationship between pieces of content.
 
-<div class="aside"><div>
-
-
-As a web designer, you are already well familiar with the concept of a GUI. But have you ever heard of a ZUI - zoomable user interface? The term might be new, but the zooming design pattern is a popular concept. Its most literal form can be found in vector applications like Illustrator or 3D applications like Google Sketch-up, where zooming translates into getting closer in on smaller objects.
-
-Now in the age of mobile with iOS and Android browsers, zooming has been leveraged to allow devices with small screens display content designed for desktops. Zooming enables users to navigate within the page.
-
-Given all the examples of the zooming interaction, you can rest assure that building it into your web app will not be that revolutionary. Users might not expect it at first, but clearly, they have used zooming in some capacity in the past.
-
-
- Zooming is built into  You zoom using Google Maps, Photoshop, Illustrator. iOS and Android browsers are able to zoom into certain sections of websites.  
-
-</div></div>
+_See boxout: [Zooming overview](zooming-overview.html)_
 
 In the example we will build in this tutorial, the page details the services of a web development shop. The services listed range from the broad - general web development - to the specific - CSS3 transforms. With each advancing section, the content dives deeper into the subject,  getting more focused, and more technical. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections.  Placing these sections inside one another visually communicate the relationship between them.
 

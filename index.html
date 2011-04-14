@@ -4,6 +4,23 @@ layout: nil
 
 {% include article-header.html %}
 
+  <h1>{{ site.name }}</h1>
+
+  <h2>by <a href="http://desandro.com">David DeSandro</a></h2>
+
+  <p>Written for .net Magazine</p>
+
+  <ul>
+    <li><a href="demo1.html">Demo 1</a></li>
+    <li><a href="demo2.html">Demo 2</a></li>
+    <li><a href="demo3.html">Demo 3</a></li>
+    <li><a href="demo4.html">Demo 4</a></li>
+  </ul>
+
+  <hr />
+
+  <div id="content">
+
   {% for post in site.posts %}
     {{ post.content }}
   {% endfor %}
