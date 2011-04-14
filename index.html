@@ -21,8 +21,11 @@ layout: nil
 
   <div id="content">
 
-  {% for post in site.posts %}
-    {{ post.content }}
+  {% for post in site.posts reversed %}
+    <div class="article">
+      <h1>{{ post.title }}</h1>
+      {{ post.content }}
+    </div> <!-- .article -->
   {% endfor %}
 
 {% include article-footer.html %}
