@@ -24,26 +24,6 @@ In this tutorial, let's build a Zoomable User Interface into a simple page. We w
 
 Our example page lists the services of a web development shop. The services listed range from the broad - general web development - to the specific - CSS3 transforms. With each advancing section, the content dives deeper into the subject, getting more focused and more technical. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections.  Placing these sections inside one another visually communicate the relationship between them.
 
-The basic content structure for this page is as follows:
-
-Web development
-  CMS Integration
-  Server-side Scripting
-  Front end development
-    HTML
-    JavaScript
-    CSS
-      Web Standards
-      Higher performance
-      CSS3
-        Transitions
-        Animation
-        Transforms
-          Scale
-          Translate
-          Rotation
-
-
 ## Basic layout
 
   <div class="aside"><div>
@@ -273,13 +253,45 @@ See [Demo 4 - Scroll to zoom](demo4.html)
 
 ## Navigation
 
-Try clicking the page navigation.  Since implementing the transforms, we've broken it because there's nothing to scroll to -- all the content is held within itself.
+Try clicking the page navigation.  Since implementing the transforms, we've broken it because there's nothing to scroll to -- all the content is held within itself. To resolve this, we'll need to bind an event to the navigation, just like we did with the window scrolling.
 
-To resolve this, we'll need to bind an event to the navigation, just like we did with the window scrolling.
+As we did with `#content`, we'll need to pass the DOM nodes of the navigation into the `Zoomer` instance. We'll need another property that will return a zero-based index if we provide a hash, seen here as `levelGuide`.
 
-Then we can use `Zoomer.prototype.click` to control what happens when a nav item is clicked. We can take the hash of the clicked element and pass it to another method `scrollFromHash`. With the hash, we can determine the level of its destination from the `levelGuide` set within the `Zoomer` constructor. This value then need to be interpolated as a distance in pixels from 0 to the scrollable height of the page.  Set here as `scrollY`.  We use this value to set the scroll position of the page.
+    function Zoomer( content, navLinks ) {
+      // keep track of DOM
+      this.content = content;
+      this.navLinks = navLinks;
+      // ...
+      this.levelGuide = {
+        '#web-dev' : 0,
+        '#front-end' : 1,
+        '#css' : 2,
+        '#css3' : 3,
+        '#transforms' : 4
+      };
+      // ...
+      // bind Zoomer.click to nav item clicks
+      for ( var i=0, len = this.navLinks.length; i < len; i++ ) {
+        this.navLinks[i].addEventListener( 'click', this, false );
+      }
+    }
+    // ...
+    function init() {
+      var content = document.getElementById('content'),
+          navLinks = document.querySelectorAll('#nav a'),
+          // init Zoomer constructor
+          ZUI = new Zoomer( content, navLinks );
+    }
 
-Once we apply `scrollY` to `window.scrollTo`, the window scroll event is triggered, which in turn triggers Zoomer.scroll. The consequential transform is already take care for us.
+The `Zoomer` instance `ZUI` can then be used as an event listener for when any of the navigation `<a>` are clicked.
+
+    // bind Zoomer.click to nav item clicks
+    var navAnchors = document.querySelectorAll('#nav a');
+    for (var i=0, len = navAnchors.length; i < len; i++) {
+      navAnchors[i].addEventListener( 'click', ZUI, false );
+    }    
+
+`Zoomer.prototype.click` will control what happens when a navigation link is clicked. We can take the hash of the clicked element and pass it to another method `scrollFromHash`.
 
     // triggered on nav click
     Zoomer.prototype.click = function( event ) {
@@ -288,7 +300,9 @@ Once we apply `scrollY` to `window.scrollTo`, the window scroll event is trigger
       this.scrollFromHash( hash );
       event.preventDefault();
     };
-    
+
+With the hash, we can determine the level of its destination from the `levelGuide`. This value then need to be interpolated as a distance in pixels from 0 to the scrollable height of the page.  Set here as `scrollY`.  We use this value to set the scroll position of the page. Once we apply `scrollY` to `window.scrollTo`, the window scroll event is triggered, which in turn triggers Zoomer.scroll. The consequential transform is already take care for us.
+
     // reverse engineer scroll position from hash
     Zoomer.prototype.scrollFromHash = function( hash ) {
       var targetLevel = this.levelGuide[ hash ];
@@ -307,9 +321,15 @@ Once we apply `scrollY` to `window.scrollTo`, the window scroll event is trigger
 
 Now when we click the navigation, the zoom is updated accordingly. We can also use the `scrollFromHash` method to zoom in if the page is loaded with a hash. Within `init()`:
 
-    if ( window.location.hash ) {
-      ZUI.scrollFromHash( window.location.hash );
+    // scroll/zoom to hash if available 
+    function scrollToHash() {
+      if ( window.location.hash ) {
+        ZUI.scrollFromHash( window.location.hash );
+      }
     }
+    window.addEventListener( 'load', scrollToHash, false );
+
+See [Demo 5 - Clickable navigation](demo5.html)
 
 ## Transitions
 
@@ -335,8 +355,26 @@ We cannot just add transitions, as they will interfere with the numerous transfo
 Again, we're leveraging the `handleEvent` method to be able to pass in the constructor.  The respective methods only need to remove the `transitions-enabled` class and the event listeners.
 
 
+    Zoomer.prototype.webkitTransitionEnd = function( event ) {
+      this.transitionEnded( event );
+    };
+    Zoomer.prototype.transitionend = function( event ) {
+      this.transitionEnded( event );
+    };
+    Zoomer.prototype.oTransitionEnd = function( event ) {
+      this.transitionEnded( event );
+    };
+    // disables transition after nav click
+    Zoomer.prototype.transitionEnded = function( event ) {
+      this.content.className = '';
+      this.content.removeEventListener( 'webkitTransitionEnd', this, false );
+      this.content.removeEventListener( 'transitionend', this, false );
+      this.content.removeEventListener( 'oTransitionEnd', this, false );
+    };
 
+## Active navigation
 
+Transitions certainly help orient the user, but we can help them out even further by actively highlighting the current section they are viewing. Within 
     
     
     

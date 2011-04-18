@@ -134,7 +134,7 @@
       color: white;
     }
     
-    #nav li.current a {
+    #nav li a.current {
       background: blue;
       color: white;
     }
