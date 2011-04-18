@@ -40,6 +40,11 @@ Web development
 ## Basic layout
 
 When laying out the sections of this page, we need to consider how each section will fit inside one another. I've chosen to use a ratio of 3:1 for the proportion between the current section and its subsequent section. The area of each section will be 900px x 540px so it fits within most browser windows. Subsequent sections will have dimensions one-third the full size, 300px x 180px.
+<div class="aside"><div>
+  <p class="caption">Before we create a zoomable layout, we need to set up a basic layout that is designed for browsers without support CSS transforms or browsers with JavaScript disabled.</p>
+  <a href="demo1.html"><img src="http://i.imgur.com/53jXt.png" alt="ZUI Site Riot - Demo 1 - Basic Layout screenshot" style="width: 165px" /></a>
+</div></div>
+
 
 The basic markup of the site so far:
 
