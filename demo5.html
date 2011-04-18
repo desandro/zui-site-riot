@@ -83,6 +83,20 @@ title: Demo 5 - Navigation
         this.content.style.MozTransform = transformValue;
         this.content.style.OTransform = transformValue;
         this.content.style.transform = transformValue;
+        
+        // change current selection on nav
+        this.currentLevel = Math.round( this.scrolled * this.levels );
+
+        if ( this.currentLevel !== this.previousLevel ) {
+          // remove previous currentNavItem
+          if ( this.currentNavLink ) {
+            this.currentNavLink.className = '';
+          }
+          // select new currentNavItem
+          this.currentNavLink = this.navLinks[ this.currentLevel ];
+          this.currentNavLink.className = 'current';
+          this.previousLevel = this.currentLevel;
+        }
       };
       
       // triggered on nav click

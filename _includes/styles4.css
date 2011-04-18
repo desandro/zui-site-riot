@@ -7,3 +7,8 @@
            -o-transition:      -o-transform 1s;
               transition:         transform 1s;
     }
+    
+    #nav li a.current {
+      background: blue;
+      color: white;
+    }

@@ -329,11 +329,33 @@ Now when we click the navigation, the zoom is updated accordingly. We can also u
     }
     window.addEventListener( 'load', scrollToHash, false );
 
-See [Demo 5 - Clickable navigation](demo5.html)
+## Active navigation
+
+Zooming from section to section is such a new interaction pattern, that we want to help our users out as much as possible.  We can guide them by actively highlighting the current section they are viewing. Within `Zoomer.prototype.scroll` we need only to determine the current level the user is viewing:
+
+    // change current selection on nav
+    this.currentLevel = Math.round( this.scrolled * this.levels );
+
+If the level is different than the previous one, highlight its corresponding navigation item by toggling the `current` class. 
+
+    if ( this.currentLevel !== this.previousLevel ) {
+      // remove previous currentNavItem
+      if ( this.currentNavLink ) {
+        this.currentNavLink.className = '';
+      }
+      // select new currentNavItem
+      this.currentNavLink = this.navLinks[ this.currentLevel ];
+      this.currentNavLink.className = 'current';
+      this.previousLevel = this.currentLevel;
+    }
+
+You can style the `.current` class however you like in your CSS.
+
+See [Demo 5 - Navigation](demo5.html)
 
 ## Transitions
 
-The navigation works again, but jumping from zoom to zoom is a bit disorienting. We can help the user understand what changed by add CSS transitions.  In the CSS, add the styles to enable CSS transitions.
+The navigation works as it should, but jumping from zoom to zoom is a bit disorienting. We can help the user understand what changed by add CSS transitions.  In the CSS, add the styles to enable CSS transitions.
 
     /* enables transitions */
     .csstransitions #content.transitions-enabled {
@@ -372,12 +394,3 @@ Again, we're leveraging the `handleEvent` method to be able to pass in the const
       this.content.removeEventListener( 'oTransitionEnd', this, false );
     };
 
-## Active navigation
-
-Transitions certainly help orient the user, but we can help them out even further by actively highlighting the current section they are viewing. Within 
-    
-    
-    
-
-
-  
