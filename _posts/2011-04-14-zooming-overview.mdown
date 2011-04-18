@@ -15,4 +15,10 @@ Plenty of desktop application have zooming capabilities. Microsoft Word and Powe
 
 Mac OS X has zooming built into its interface. Holding Control and scrolling will zoom the entire screen towards the cursor.
 
+zoomquilt.nikkki.net
+
+http://zoomism.com/ 
+
 Given all these examples, you can rest assure that building zooming into your web app will not be that revolutionary. Users might not expect it at first, but clearly, they have used zooming in some capacity in the past.
+
+Considering the myriad of examples above, the ZUI has found a niche in the current digital interface landscape. But this still begs the question - is it feasi.  
