@@ -1,20 +1,6 @@
 
     /* step 2 */
 
-/*    #wrap {
-      position: fixed;
-      width: 100%;
-    }
-
-    #container {
-    }
-    
-    #content {
-      width: 900px;
-      height: 540px;
-      -webkit-transform: scale(3);
-    }*/
-
     .csstransforms #content {
       position: absolute;
       width: 900px;
