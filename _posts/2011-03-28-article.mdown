@@ -266,7 +266,7 @@ Now the content zooms when you scroll. Whooaaaaaaaaa.
 
 See [Demo 4 - Scroll to zoom](demo4.html)
 
-<div class="aside"><div>
+  <div class="aside"><div>
 <p>Hijacking the scroll behavior enables users to zoom in to inner content.</p>
 <p><a href="http://desandro.com/work/zui-site-riot">Get hi-res 'scroll' screenshots</a></p>
 </div></div>
@@ -384,6 +384,12 @@ You can style the `.current` class however you like in your CSS.
 See [Demo 5 - Navigation](demo5.html)
 
 ## Transitions
+
+  <div class="aside"><div>
+<p><img src="http://desandro.com/work/zui-site-riot/html5css3.png" alt="CSS3 logo" style="width: 330px;"></p>
+<p>CSS3 is the principal technology that enables the ZUI for this page. We are leveraging transforms and transitions.</p>
+<p><a href="http://desandro.com/work/zui-site-riot/html5css3.png">View hi-res</a></p>
+</div></div>
 
 The navigation works as it should, but jumping from zoom to zoom is a bit disorienting. We can help the user understand what changed by add CSS transitions.  In the CSS, add the styles to enable CSS transitions.
 
