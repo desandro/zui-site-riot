@@ -73,7 +73,7 @@ The first draft of the site has the content laid out in the typical vertical pat
 
 You'll notice that each section has an empty space in the center of it.  This space has been reserved for the subsequent sections to fit inside it once CSS transforms are put in place.
 
-See [Demo 1 - Basic layout](demo1.html)
+See [Demo 1 - Basic layout](demo1.html) ([desandro.github.com/zui-site-riot/demo1.html](desandro.github.com/zui-site-riot/demo1.html))
 
 ## Adding transforms
 
@@ -127,7 +127,7 @@ The scale of first level, `#web-dev` is `(1/3) ^ 0` or just 1, so we don't need 
 
 Awesome! The sections have been transformed to fit inside one another, like Russian nesting dolls.
 
-See [Demo 2 - Scaled sections](demo2.html)
+See [Demo 2 - Scaled sections](demo2.html)  ([desandro.github.com/zui-site-riot/demo2.html](desandro.github.com/zui-site-riot/demo2.html))
 
   <div class="aside"><div>
 <p>Each section is positioned inside one another using CSS <code>scale</code> transforms.   You can see the second section within the first, and if you look closely, you'll find the others deeper within.</p>
@@ -150,7 +150,7 @@ The scale to view the third level would be `3 ^ 2 = 9`. For the fourth level, th
               transform: scale(27);
     }
 
-See [Demo 3 - Fixed zoom](demo3.html)
+See [Demo 3 - Fixed zoom](demo3.html)  ([desandro.github.com/zui-site-riot/demo3.html](desandro.github.com/zui-site-riot/demo3.html))
 
   <div class="aside"><div>
 <p>Applying a scale that increases the size of container will zoom in on its content.</p>
@@ -274,8 +274,8 @@ All that's left is to initialize a new `Zoomer` instance, pass in the `#content`
     window.addEventListener( 'DOMContentLoaded', init, false );
 
 Now the content zooms when you scroll. Whooaaaaaaaaa.
-
-See [Demo 4 - Scroll to zoom](demo4.html)
+ 
+See [Demo 4 - Scroll to zoom](demo4.html)  ([desandro.github.com/zui-site-riot/demo4.html](desandro.github.com/zui-site-riot/demo4.html))
 
   <div class="aside"><div>
 <p>If done correctly, when you scroll to the bottom of the page, you'll zoom in perfectly to the last section.</p>
@@ -389,7 +389,7 @@ If the level is different than the previous one, highlight its corresponding nav
 
 You can style the `.current` class however you like in your CSS.
 
-See [Demo 5 - Navigation](demo5.html)
+See [Demo 5 - Navigation](demo5.html)  ([desandro.github.com/zui-site-riot/demo5.html](desandro.github.com/zui-site-riot/demo5.html))
 
 ## Transitions
 
@@ -440,7 +440,7 @@ Again, we're leveraging the `handleEvent` method to be able to pass in the const
 
 Try clicking on the navigation. If your browser supports CSS transitions, you'll be pleasantly whisked away zooming towards the appropriate section.
 
-See [Demo 6 - Transitions](demo6.html)
+See [Demo 6 - Transitions](demo6.html)  ([desandro.github.com/zui-site-riot/demo6.html](desandro.github.com/zui-site-riot/demo6.html))
 
 ## Completion
 
