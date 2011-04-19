@@ -404,6 +404,10 @@ Again, we're leveraging the `handleEvent` method to be able to pass in the const
       this.content.removeEventListener( 'oTransitionEnd', this, false );
     };
 
+## Completion
+
+Behold what you have accomplished! Not only have you produced a pioneer in the realm of web interface development, but you have built it in such a way that it will be fun to use and engaging to interact with. Well done!
+
 ### About the author
 
 + **Name:** David DeSandro
