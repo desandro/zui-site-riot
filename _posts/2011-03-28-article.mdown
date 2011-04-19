@@ -7,7 +7,7 @@ layout: article
 
 ### Tutorial info
  
-+ **Knowledge needed:** Intermediate CSS, Intermediate JavaScript
++ **Knowledge needed:** CSS, Intermediate JavaScript
 + **Requires:** text editor, browser that supports CSS3 transforms
 + **Project time:** 4 hours
 
@@ -78,6 +78,8 @@ You'll notice that each section has an empty space in the center of it.  This sp
 See [Demo 1 - Basic layout](demo1.html)
 
 ## Adding transforms
+
+
 
 With the basic layout established, we can now start adding CSS transforms. Before we jump in with the CSS, let's add Modernizr so we have more control over how browsers will inherit their styles.  I opted to use a custom build from the Modernizr 2.0 beta preview, that only tests for CSS 2D transforms and CSS transitions 
 ([modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp](http://modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp)). After adding the Modernizr code to scripts.js, we can target browsers that support transforms with `.csstransforms` in our CSS.
@@ -185,7 +187,16 @@ The page scrolls, but the content remains static. Now the fun begins as we jump 
 
 ## JavaScript
 
-The basic idea is that we are going to hijack the scroll event and do something with it. As all this script will only need to run if the browser supports CSS transforms, we can encapsulate our entire script in a self-executing function, which will only proceed if CSS transforms are supported. 
+The basic idea is that we are going to hijack the scroll event and do something with it.
+
+  <div class="aside"><div>
+<p>Hijacking the scroll behavior enables users to zoom in to inner content.</p>
+<p><a href="http://desandro.com/work/zui-site-riot">Get hi-res 'scroll' screenshots</a></p>
+</div></div>
+
+[![Demo 4 - Scroll to zoom](http://desandro.com/work/zui-site-riot/scrolling.png)](demo4.html)
+
+As all this script will only need to run if the browser supports CSS transforms, we can encapsulate our entire script in a self-executing function, which will only proceed if CSS transforms are supported. 
 
     (function(){
       // only proceed if CSS transforms are supported
@@ -267,11 +278,11 @@ Now the content zooms when you scroll. Whooaaaaaaaaa.
 See [Demo 4 - Scroll to zoom](demo4.html)
 
   <div class="aside"><div>
-<p>Hijacking the scroll behavior enables users to zoom in to inner content.</p>
-<p><a href="http://desandro.com/work/zui-site-riot">Get hi-res 'scroll' screenshots</a></p>
+<p>If done correctly, when you scroll to the bottom of the page, you'll zoom in perfectly to the last section.</p>
+<p><a href="http://desandro.com/work/zui-site-riot/screenshot-end.png">View hi-res</a></p>
 </div></div>
 
-[![Demo 4 - Scroll to zoom](http://desandro.com/work/zui-site-riot/scrolling.png)](demo4.html)
+![Transform end](http://desandro.com/work/zui-site-riot/screenshot-end.png)
 
 
 
@@ -444,4 +455,4 @@ Behold what you have accomplished! Not only have you produced a pioneer in the r
 + **Site:** [desandro.com](http://desandro.com)
 + **Expertise:** Creative programming with CSS and JavaScript
 + **Clients:** Apple, Oracle, Mashable
-+ **Photo** [![Headshot by Dave DeSandro, on Flickr](http://farm4.static.flickr.com/3570/3819300088_33ec7dcc95_m.jpg)](http://www.flickr.com/photos/nemoorange/3819300088/) [Hi-res available](http://www.flickr.com/photos/nemoorange/3819300088/sizes/o/)
++ **Photo** [![Headshot by Dave DeSandro, on Flickr](http://farm4.static.flickr.com/3570/3819300088_33ec7dcc95_z.jpg)](http://www.flickr.com/photos/nemoorange/3819300088/) [Hi-res available](http://www.flickr.com/photos/nemoorange/3819300088/sizes/o/)
