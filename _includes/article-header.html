@@ -16,7 +16,6 @@
       max-width: 580px;
       margin: 0 auto;
       padding: 8px;
-      padding-right: 370px;
     }
   
     hr {
@@ -33,6 +32,7 @@
     pre {
       padding: 1.0em;
       border: 1px solid #DDD;
+      white-space: pre-wrap;
     }
     
     p code {
@@ -45,9 +45,6 @@
     }
     
     .aside div {
-      position: absolute;
-      right: -340px;
-      width: 300px;
       font-size: 13px;
       color: #666;
     }
@@ -60,13 +57,26 @@
     
     img {
       border: 1px solid #DDD;
+      display: block;
+      width: 100%;
       max-width: 578px;
     }
     
     a { color: blue; }
     a:hover { color: red; }
     
-    
+    @media screen and (min-width: 970px) {
+      #wrap {
+        padding-right: 370px;
+      }
+      
+      .aside div {
+        position: absolute;
+        right: -340px;
+        width: 300px;
+      }
+      
+    }
   </style>
 
 </head>
