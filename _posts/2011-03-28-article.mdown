@@ -17,8 +17,12 @@ With CSS3 transforms now supported in most major browsers, we have the delightfu
 
 With the site for BeerCamp at SXSW 2011 ([2011.beercamp.com](http://2011.beercamp.com)), we at nclud recognized an ideal opportunity to bend some rules and try something new. I got the idea to leverage CSS transforms to reconfigure the typical vertically scrolling site, where you traversed it downwards into a site that you traversed _inwards_. This is sort of design pattern has been categorized as a Zoomable User Interface or ZUI.
 
+ <div class="aside"><div>
+<p>The BeerCamp at SXSW 2011 was an experiment in using CSS transforms to create a new interface design pattern.</p>
+<p><a href="http://s3.amazonaws.com/ember/U9Zhuu3Vf2frBxrNrNsoldLp2N55Weq7_o.png">View hi-res</a></p>
+</div></div>
 
-With the BeerCamp site, I chose to use a zoomable layout more as a experimental spectacle than as a proper design convention. But that's not to say that zoomable interfaces have no merit. 
+[![BeerCamp at SXSW 2011](http://s3.amazonaws.com/ember/U9Zhuu3Vf2frBxrNrNsoldLp2N55Weq7_m.jpg)](http://2011.beercamp.com)
 
 _See boxout: [Zooming overview](zooming-overview.html)_
 
@@ -40,7 +44,8 @@ Our example page lists the services of a web development shop. The services list
 
   <div class="aside"><div>
 <p class="caption">Before we create a zoomable layout, we need to set up a basic layout that is designed for browsers without support CSS transforms or browsers with JavaScript disabled.</p>
-<a href="demo1.html"><img src="http://i.imgur.com/53jXt.png" alt="ZUI Site Riot - Demo 1 - Basic Layout screenshot" style="width: 165px" /></a>
+<p><a href="demo1.html"><img src="http://i.imgur.com/53jXt.png" alt="ZUI Site Riot - Demo 1 - Basic Layout screenshot" style="width: 165px" /></a></p>
+<p><a href="http://s3.amazonaws.com/ember/OcgEEVgIZvBP1GVtQ7CaIbeL8u5Nosz9_o.png">View hi-res</a></p>
 </div></div>
 
 When laying out the sections of this page, we need to consider how each section will fit inside one another. I've chosen to use a ratio of 3:1 for the proportion between the current section and its subsequent section. In addition to adhering to the ideal compositional Rule of Thirds, this is a reasonable ratio for parent/child sizes and the parent will have enough room for content, and the child container will still be visible. The area of each section will be 900px x 540px so it fits within most browser windows. Subsequent sections will have dimensions one-third the full size, 300px x 180px.
@@ -122,7 +127,10 @@ Awesome! The sections have been transformed to fit inside one another, like Russ
 
 See [Demo 2 - Scaled sections](demo2.html)
 
-<div class="aside"><div>Each section is positioned inside one another using CSS <code>scale</code> transforms.   You can see the second section within the first, and if you look closely, you'll find the others deeper within.</div></div>
+  <div class="aside"><div>
+<p>Each section is positioned inside one another using CSS <code>scale</code> transforms.   You can see the second section within the first, and if you look closely, you'll find the others deeper within.</p>
+<p><a href="http://s3.amazonaws.com/ember/1P7jgub6IklObU0YN3BXXuDXH4GVxAAC_o.png">View hi-res</a></p>
+</div></div>
 
 [![Demo 2 - Scaled sections screenshot](http://s3.amazonaws.com/ember/1P7jgub6IklObU0YN3BXXuDXH4GVxAAC_o.png)](demo2.html)
 
@@ -142,7 +150,10 @@ The scale to view the third level would be `3 ^ 2 = 9`. For the fourth level, th
 
 See [Demo 3 - Fixed zoom](demo3.html)
 
-<div class="aside"><div>Applying a scale that increases the size of container will zoom in on its content.</div></div>
+  <div class="aside"><div>
+<p>Applying a scale that increases the size of container will zoom in on its content.</p>
+<p><a href="http://s3.amazonaws.com/ember/zCa4GlWMxTB3BA36GADGIFDGNSm5v2sK_o.png">View hi-res</a></p>
+</div></div>
 
 [![Demo 3 - Fixed zoom](http://s3.amazonaws.com/ember/zCa4GlWMxTB3BA36GADGIFDGNSm5v2sK_o.png)](demo3.html)
 
@@ -255,13 +266,22 @@ Now the content zooms when you scroll. Whooaaaaaaaaa.
 
 See [Demo 4 - Scroll to zoom](demo4.html)
 
-<div class="aside"><div>Hijacking the scroll behavior enables users to zoom in to inner content.</div></div>
+<div class="aside"><div>
+<p>Hijacking the scroll behavior enables users to zoom in to inner content.</p>
+<p><a href="http://desandro.com/work/zui-site-riot">Get hi-res 'scroll' screenshots</a></p>
+</div></div>
 
 [![Demo 4 - Scroll to zoom](http://desandro.com/work/zui-site-riot/scrolling.png)](demo4.html)
 
 
 
 ## Navigation
+
+  <div class="aside"><div>
+<p><img src="http://desandro.com/work/zui-site-riot/navs.png" alt="navigation" style="width: 330px" /></p>
+<p>You can't make any omelets without breaking a couple eggs. Enabling a ZUI, means disabling anchor links. We'll need to develop a solution.</p>
+<p><a href="http://desandro.com/work/zui-site-riot/navs.png">View hi-res</a></p>
+</div></div>
 
 Try clicking the page navigation.  Since implementing the transforms, we've broken it because there's nothing to scroll to -- all the content is held within itself. To resolve this, we'll need to bind an event to the navigation, just like we did with the window scrolling.
 
@@ -403,6 +423,10 @@ Again, we're leveraging the `handleEvent` method to be able to pass in the const
       this.content.removeEventListener( 'transitionend', this, false );
       this.content.removeEventListener( 'oTransitionEnd', this, false );
     };
+
+Try clicking on the navigation. If your browser supports CSS transitions, you'll be pleasantly whisked away zooming towards the appropriate section.
+
+See [Demo 6 - Transitions](demo6.html)
 
 ## Completion
 
