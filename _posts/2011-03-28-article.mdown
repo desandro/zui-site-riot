@@ -78,7 +78,7 @@ See [Demo 1 - Basic layout](demo1.html)
 ## Adding transforms
 
 With the basic layout established, we can now start adding CSS transforms. Before we jump in with the CSS, let's add Modernizr so we have more control over how browsers will inherit their styles.  I opted to use a custom build from the Modernizr 2.0 beta preview, that only tests for CSS 2D transforms and CSS transitions 
-([modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp](http://modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp)). After adding the Modernizr code to scripts.js, we can target browsers that support transforms with `.csstransforms` in our CSS.
+([modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp](http://modernizr.github.com/Modernizr/2.0-beta/#csstransforms-csstransitions-iepp)). After adding the Modernizr code to our scripts, we can target browsers that support transforms with `.csstransforms` in our CSS.
 
 To scale each section inside one another, they first need to occupy the same space.  This can be done with absolute positioning.
 
@@ -310,11 +310,6 @@ As we did with `#content`, we'll need to pass the DOM nodes of the navigation in
         '#css3' : 3,
         '#transforms' : 4
       };
-      // ...
-      // bind Zoomer.click to nav item clicks
-      for ( var i=0, len = this.navLinks.length; i < len; i++ ) {
-        this.navLinks[i].addEventListener( 'click', this, false );
-      }
     }
     // ...
     function init() {
@@ -326,11 +321,13 @@ As we did with `#content`, we'll need to pass the DOM nodes of the navigation in
 
 The `Zoomer` instance `ZUI` can then be used as an event listener for when any of the navigation `<a>` are clicked.
 
-    // bind Zoomer.click to nav item clicks
-    var navAnchors = document.querySelectorAll('#nav a');
-    for (var i=0, len = navAnchors.length; i < len; i++) {
-      navAnchors[i].addEventListener( 'click', ZUI, false );
-    }    
+    function Zoomer( content, navLinks ) {
+      // ...
+      // bind Zoomer.click to nav item clicks
+      for ( var i=0, len = this.navLinks.length; i < len; i++ ) {
+        this.navLinks[i].addEventListener( 'click', this, false );
+      }
+    } 
 
 `Zoomer.prototype.click` will control what happens when a navigation link is clicked. We can take the hash of the clicked element and pass it to another method `scrollFromHash`.
 
