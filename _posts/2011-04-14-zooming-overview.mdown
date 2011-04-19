@@ -1,6 +1,6 @@
 ---
 
-title: ZUI overview
+title: Zooming overview
 layout: article
 
 ---
