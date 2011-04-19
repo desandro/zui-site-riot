@@ -5,13 +5,20 @@ layout: article
 
 ---
 
-We get it.  Design patterns are good.  Industry standard conventions help users.  This argument has been reinforced for years. But with every convention that we web designers adhere to, we lose a chance to change the game and innovate within our medium. With the site for BeerCamp at SXSW 2011 ([2011.beercamp.com](http://2011.beercamp.com)), we at nclud recognized an ideal opportunity to bend some rules and try something new. I got the idea to leverage CSS transforms to reconfigure the typical vertically scrolling site, where you traversed it downwards into a site that you traversed _inwards_.
+### Tutorial info
+ 
++ **Knowledge needed:** Intermediate CSS, Intermediate JavaScript
++ **Requires:** text editor, browser that supports CSS3 transforms
++ **Project time:** 4 hours
 
-The reaction was incredible. Over 2,500 tweets about the site just in the first couple weeks. People we not reacting to its message, or visual design, or the brand. They were excited about the way it worked.  Clearly, users enjoy innovative interfaces if they are executed well, even if its just for the sake of their ingenuity.
+* * *
 
-Now with CSS3 transforms supported in most major browsers, we have the delightful opportunity to experiment creating innovative layouts and interfaces. While the paradigm of the vertical website will continue to prosper, there's a world of possibilities out there to explore. No longer are we shackled in our one-dimensional prisons, bound to the tyranny of vertically-scrolling sites.
+With CSS3 transforms now supported in most major browsers, we have the delightful opportunity to experiment creating innovative layouts and interfaces. While the paradigm of the vertical website will continue to prosper, there's a world of possibilities out there to explore. No longer are we shackled in our one-dimensional prisons, bound to the tyranny of vertically-scrolling sites.
 
-With the BeerCamp site, I chose to use a zoomable layout more as a experimental spectacle than as a proper design convention. But that's not to say that zoomable interfaces have no merit. By placing one visual element inside another, the user can make the connection that the smaller item is a component of its parent.  You can make an immediate visual relationship between pieces of content.
+With the site for BeerCamp at SXSW 2011 ([2011.beercamp.com](http://2011.beercamp.com)), we at nclud recognized an ideal opportunity to bend some rules and try something new. I got the idea to leverage CSS transforms to reconfigure the typical vertically scrolling site, where you traversed it downwards into a site that you traversed _inwards_. This is sort of design pattern has been categorized as a Zoomable User Interface or ZUI.
+
+
+With the BeerCamp site, I chose to use a zoomable layout more as a experimental spectacle than as a proper design convention. But that's not to say that zoomable interfaces have no merit. 
 
 _See boxout: [Zooming overview](zooming-overview.html)_
 
@@ -21,8 +28,13 @@ In this tutorial, let's build a Zoomable User Interface into a simple page. We w
 + How to hi-jack scrolling to manipulate the zoom
 + How to add CSS transitions to make an impressive interaction
 
+Our example page lists the services of a web development shop. The services listed range from the broad to the specific. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections. By placing one visual element inside another, you are visually communicating the  relationship between pieces of content. The sections for our page are:
 
-Our example page lists the services of a web development shop. The services listed range from the broad - general web development - to the specific - CSS3 transforms. With each advancing section, the content dives deeper into the subject, getting more focused and more technical. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections.  Placing these sections inside one another visually communicate the relationship between them.
+1. Web development
+2. Front-end development
+3. CSS
+4. CSS3
+5. Transforms
 
 ## Basic layout
 
@@ -30,8 +42,6 @@ Our example page lists the services of a web development shop. The services list
 <p class="caption">Before we create a zoomable layout, we need to set up a basic layout that is designed for browsers without support CSS transforms or browsers with JavaScript disabled.</p>
 <a href="demo1.html"><img src="http://i.imgur.com/53jXt.png" alt="ZUI Site Riot - Demo 1 - Basic Layout screenshot" style="width: 165px" /></a>
 </div></div>
-
-
 
 When laying out the sections of this page, we need to consider how each section will fit inside one another. I've chosen to use a ratio of 3:1 for the proportion between the current section and its subsequent section. In addition to adhering to the ideal compositional Rule of Thirds, this is a reasonable ratio for parent/child sizes and the parent will have enough room for content, and the child container will still be visible. The area of each section will be 900px x 540px so it fits within most browser windows. Subsequent sections will have dimensions one-third the full size, 300px x 180px.
 
@@ -394,3 +404,10 @@ Again, we're leveraging the `handleEvent` method to be able to pass in the const
       this.content.removeEventListener( 'oTransitionEnd', this, false );
     };
 
+### About the author
+
++ **Name:** David DeSandro
++ **Site:** [desandro.com](http://desandro.com)
++ **Expertise:** Creative programming with CSS and JavaScript
++ **Clients:** Apple, Oracle, Mashable
++ **Photo** [![Headshot by Dave DeSandro, on Flickr](http://farm4.static.flickr.com/3570/3819300088_33ec7dcc95_m.jpg)](http://www.flickr.com/photos/nemoorange/3819300088/) [Hi-res available](http://www.flickr.com/photos/nemoorange/3819300088/sizes/o/)
