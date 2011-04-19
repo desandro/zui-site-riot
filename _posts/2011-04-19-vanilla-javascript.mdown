@@ -1,0 +1,20 @@
+---
+
+title: Vanilla, my favorite flavor of JavaScript
+layout: article
+
+---
+
+If you have been glancing over the code snippets for this tutorial, you may have noticed that jQuery old familiar's `$` is nowhere to be found. Like most front-end developers, I came to learn JavaScript from first being introduced to jQuery. The jQuery framework was especially welcoming with its CSS familiarity and approachable syntax that enabled novices like myself to start playing around with the DOM.
+
+As I have come to learn more about jQuery, and therein JavaScript, I have tried to ween myself off of using JavaScript frameworks. There's nothing inherently wrong with them. But leaving them for vanilla JavaScript has its advantages.
+
++ **Size**: jQuery minified comes in at 30kb. Compare that to the 8kb of the tutorial script, uncompressed. That's dead weight that can be easily lost.
+
++ **Clarity**: When you cut out using a framework, you can rely on other developers being better versed in reading your code. Frameworks, no matter how efficient their API, will always obfuscate the original functionality of JavaScript.
+
++ **Progressive enhancement**: The scripts employed in this tutorial are designed only for modern browsers that support CSS transforms. So we don't have to worry about building in support for older browsers.
+
++ **Modern browser capabilities**: Prior to the rise of frameworks like jQuery, trying to hook in to any element on the page was tedious, messy, and especially frustrating. jQuery made a huge leap forward with its selector engine. Since then, browser vendors have clued and built this functionality straight into their own browsers. `querySelectorAll` gives you the easy selection without having to go through a browser.
+
+If you are targeting modern browsers and your project is a smaller one, consider using plain ol' vanilla JavaScript. You'll learn more about the language and also come to appreciate what the frameworks have to offer.
