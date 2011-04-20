@@ -52,13 +52,7 @@ The basic markup of the site will look like the following:
 
     <div id="wrap">
       <div id="container">
-        <ul id="nav">
-          <li><a href="#web-dev">Web development</a></li>
-          <li><a href="#front-end">Front-end development</a></li>
-          <li><a href="#css">CSS</a></li>
-          <li><a href="#css3">CSS3</a></li>
-          <li><a href="#transforms">Transforms</a></li>
-        </ul>
+        <ul id="nav">...</ul>
         <div id="content">
           <section id="web-dev">...</section>
           <section id="front-end">...</section>
@@ -93,6 +87,12 @@ Each section needs to have its own scale set. As the proportion we are using is 
 
 The scale of first level, `#web-dev` is `(1/3) ^ 0` or just 1, so we don't need to set that superfluous style.  The scale of the second level, `#front-end` is `(1/3) ^ 1` or 1/3 or in decimal `0.3333`. The scale of the third level `#css` is  `(1/3) ^ 2` or 1/9 or in decimal `0.1111`.  We'll apply this value to the various vendor-prefix `transform` CSS properties for all four of our subsequent sections.
 
+  <div class="aside"><div>
+<p><img src="http://desandro.com/work/zui-site-riot/html5css3.png" alt="CSS3 logo" style="width: 330px;"></p>
+<p>CSS3 is the principal technology that enables the ZUI for this page. We are leveraging transforms and transitions.</p>
+<p><a href="http://desandro.com/work/zui-site-riot/html5css3.png">View hi-res</a></p>
+</div></div>
+
     /* level index 1: (1/3) ^ 1 = 1/3 = 0.3333 */
     .csstransforms #front-end {
       -webkit-transform: scale(0.3333);
@@ -100,15 +100,13 @@ The scale of first level, `#web-dev` is `(1/3) ^ 0` or just 1, so we don't need 
            -o-transform: scale(0.3333);
               transform: scale(0.3333);
     }
-    
-     /* level index 2: (1/3) ^ 2 ) = 1/9 = 0.1111 */
+    /* level index 2: (1/3) ^ 2 ) = 1/9 = 0.1111 */
     .csstransforms #css {
       -webkit-transform: scale(0.1111);
          -moz-transform: scale(0.1111);
            -o-transform: scale(0.1111);
               transform: scale(0.1111);
     }
-    
     /* level index 3: (1/3) ^ 3 = 1/27 = 0.0370 */
     .csstransforms #css3 {
       -webkit-transform: scale(0.037);
@@ -116,7 +114,6 @@ The scale of first level, `#web-dev` is `(1/3) ^ 0` or just 1, so we don't need 
            -o-transform: scale(0.037);
               transform: scale(0.037);
     }
-    
     /* level index 4: (1/3) ^ 4 = 1/81 = 0.0123456 */
     .csstransforms #transforms {
       -webkit-transform: scale(0.0123456);
@@ -283,164 +280,6 @@ See [Demo 4 - Scroll to zoom](demo4.html)
 </div></div>
 
 ![Transform end](http://desandro.com/work/zui-site-riot/screenshot-end.png)
-
-
-
-## Navigation
-
-  <div class="aside"><div>
-<p><img src="http://desandro.com/work/zui-site-riot/navs.png" alt="navigation" style="width: 330px" /></p>
-<p>You can't make any omelets without breaking a couple eggs. Enabling a ZUI, means disabling anchor links. We'll need to develop a solution.</p>
-<p><a href="http://desandro.com/work/zui-site-riot/navs.png">View hi-res</a></p>
-</div></div>
-
-Try clicking the page navigation.  Since implementing the transforms, we've broken it because there's nothing to scroll to -- all the content is held within itself. To resolve this, we'll need to bind an event to the navigation, just like we did with the window scrolling.
-
-As we did with `#content`, we'll need to pass the DOM nodes of the navigation into the `Zoomer` instance. We'll need another property that will return a zero-based index if we provide a hash, seen here as `levelGuide`.
-
-    function Zoomer( content, navLinks ) {
-      // keep track of DOM
-      this.content = content;
-      this.navLinks = navLinks;
-      // ...
-      this.levelGuide = {
-        '#web-dev' : 0,
-        '#front-end' : 1,
-        '#css' : 2,
-        '#css3' : 3,
-        '#transforms' : 4
-      };
-    }
-    // ...
-    function init() {
-      var content = document.getElementById('content'),
-          navLinks = document.querySelectorAll('#nav a'),
-          // init Zoomer constructor
-          ZUI = new Zoomer( content, navLinks );
-    }
-
-The `Zoomer` instance `ZUI` can then be used as an event listener for when any of the navigation `<a>` are clicked.
-
-    function Zoomer( content, navLinks ) {
-      // ...
-      // bind Zoomer.click to nav item clicks
-      for ( var i=0, len = this.navLinks.length; i < len; i++ ) {
-        this.navLinks[i].addEventListener( 'click', this, false );
-      }
-    } 
-
-`Zoomer.prototype.click` will control what happens when a navigation link is clicked. We can take the hash of the clicked element and pass it to another method `scrollFromHash`.
-
-    // triggered on nav click
-    Zoomer.prototype.click = function( event ) {
-      //  get scroll based on href of clicked nav item
-      var hash = event.target.hash || event.target.parentNode.hash;
-      this.scrollFromHash( hash );
-      event.preventDefault();
-    };
-
-With the hash, we can determine the level of its destination from the `levelGuide`. This value then need to be interpolated as a distance in pixels from 0 to the scrollable height of the page.  Set here as `scrollY`.  We use this value to set the scroll position of the page. Once we apply `scrollY` to `window.scrollTo`, the window scroll event is triggered, which in turn triggers Zoomer.scroll. The consequential transform is already take care for us.
-
-    // reverse engineer scroll position from hash
-    Zoomer.prototype.scrollFromHash = function( hash ) {
-      var targetLevel = this.levelGuide[ hash ];
-      // proceed only if hash matches a level
-      if ( targetLevel === undefined ) {
-        return;
-      }
-      var scrollY = targetLevel / this.levels;
-      // adjust for scrollable height
-      scrollY = scrollY * ( this.docHeight - window.innerHeight );
-      // set hash in location URL
-      window.location.hash = hash;
-      // set scroll position, Zoomer.scroll will take care of the rest
-      window.scrollTo( 0, scrollY );
-    };
-
-Now when we click the navigation, the zoom is updated accordingly. We can also use the `scrollFromHash` method to zoom in if the page is loaded with a hash. Within `init()`:
-
-    // scroll/zoom to hash if available 
-    function scrollToHash() {
-      if ( window.location.hash ) {
-        ZUI.scrollFromHash( window.location.hash );
-      }
-    }
-    window.addEventListener( 'load', scrollToHash, false );
-
-## Active navigation
-
-Zooming from section to section is such a new interaction pattern, that we want to help our users out as much as possible.  We can guide them by actively highlighting the current section they are viewing. Within `Zoomer.prototype.scroll` we need only to determine the current level the user is viewing:
-
-    // change current selection on nav
-    this.currentLevel = Math.round( this.scrolled * this.levels );
-
-If the level is different than the previous one, highlight its corresponding navigation item by toggling the `current` class. 
-
-    if ( this.currentLevel !== this.previousLevel ) {
-      // remove previous currentNavItem
-      if ( this.currentNavLink ) {
-        this.currentNavLink.className = '';
-      }
-      // select new currentNavItem
-      this.currentNavLink = this.navLinks[ this.currentLevel ];
-      this.currentNavLink.className = 'current';
-      this.previousLevel = this.currentLevel;
-    }
-
-You can style the `.current` class however you like in your CSS.
-
-See [Demo 5 - Navigation](demo5.html)
-
-## Transitions
-
-  <div class="aside"><div>
-<p><img src="http://desandro.com/work/zui-site-riot/html5css3.png" alt="CSS3 logo" style="width: 330px;"></p>
-<p>CSS3 is the principal technology that enables the ZUI for this page. We are leveraging transforms and transitions.</p>
-<p><a href="http://desandro.com/work/zui-site-riot/html5css3.png">View hi-res</a></p>
-</div></div>
-
-The navigation works as it should, but jumping from zoom to zoom is a bit disorienting. We can help the user understand what changed by add CSS transitions.  In the CSS, add the styles to enable CSS transitions.
-
-    /* enables transitions */
-    .csstransitions #content.transitions-enabled {
-      -webkit-transition: -webkit-transform 1s;
-         -moz-transition:    -moz-transform 1s;
-           -o-transition:      -o-transform 1s;
-              transition:         transform 1s;
-    }
-
-We cannot just add transitions, as they will interfere with the numerous transforms that get applied each time the window scrolls.  Instead, we'll want to enable transitions only when the navigation is clicked. Within `Zoomer.prototype.click` transitions can be enabled by adding the `transitions-enabled` class to `#content`.  As we need to disable the transition after the it has completed, we can add event listeners for the transition end event. The multiple event listeners are for different browsers.  `'webkitTransitionEnd'` for WebKit, `'oTransitionEnd'` for Opera, and `'transitionend'` for Firefox 4.
-
-    if ( Modernizr.csstransitions ) {
-      this.content.className = 'transitions-enabled';
-      this.content.addEventListener( 'webkitTransitionEnd', this, false );
-      this.content.addEventListener( 'oTransitionEnd', this, false );
-      this.content.addEventListener( 'transitionend', this, false );
-    }
-
-Again, we're leveraging the `handleEvent` method to be able to pass in the constructor.  The respective methods only need to remove the `transitions-enabled` class and the event listeners.
-
-
-    Zoomer.prototype.webkitTransitionEnd = function( event ) {
-      this.transitionEnded( event );
-    };
-    Zoomer.prototype.transitionend = function( event ) {
-      this.transitionEnded( event );
-    };
-    Zoomer.prototype.oTransitionEnd = function( event ) {
-      this.transitionEnded( event );
-    };
-    // disables transition after nav click
-    Zoomer.prototype.transitionEnded = function( event ) {
-      this.content.className = '';
-      this.content.removeEventListener( 'webkitTransitionEnd', this, false );
-      this.content.removeEventListener( 'transitionend', this, false );
-      this.content.removeEventListener( 'oTransitionEnd', this, false );
-    };
-
-Try clicking on the navigation. If your browser supports CSS transitions, you'll be pleasantly whisked away zooming towards the appropriate section.
-
-See [Demo 6 - Transitions](demo6.html)
 
 ## Completion
 
