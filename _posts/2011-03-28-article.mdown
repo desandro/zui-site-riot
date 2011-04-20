@@ -203,29 +203,21 @@ As all this script will only need to run if the browser supports CSS transforms,
       // CSS transforms supported, continue...
     })();
 
-I'm using a constructor design pattern `Zoomer` which will do all the work. The `Zoomer` constructor requires a DOM node, specifically the content container, which will be passed in later. It holds properties like `scrolled` which will be the vertical scroll position, `levels` which is the zero-based number of sections, and `docHeight`. Most importantly, we pass it in as an event listener to the window's scroll event.
+I'm using a constructor design pattern `Zoomer` which will do all the work. The `Zoomer` constructor requires a DOM node, specifically the content container, which will be passed in later. It holds properties like `scrolled` which will be the vertical scroll position, `levels` which is the zero-based number of sections, and the height of the page in `docHeight`. Most importantly, we pass it in as an event listener to the window's scroll event.
 
 
     // the constructor that will do all the work
     function Zoomer( content ) {
-      // keep track of DOM
       this.content = content;
-      
-      // position of vertical scroll
       this.scrolled = 0;
-      // zero-based number of sections
       this.levels = 4;
-      // height of document
       this.docHeight = document.documentElement.offsetHeight;
-      
       // bind Zoomer to scroll event
       window.addEventListener( 'scroll', this, false);
     }
 
-The `handleEvent` method allows the constructor to be used within an event listener. If a method matches the event's type, that method will be called. So we can bind `Zoomer.prototype.scroll` to the window's scroll event. 
+The `handleEvent` method allows the constructor to be used as an event listener, so we can properly use `this` in `window.addEventListener( 'scroll', this, false)`. If a method matches the event's type, that method will be called. So we can bind `Zoomer.prototype.scroll` to the window's scroll event. 
 
-    // enables constructor to be used within event listener
-    // like obj.addEventListener( eventName, this, false )
     Zoomer.prototype.handleEvent = function( event ) {
       if ( this[event.type] ) {
         this[event.type](event);
@@ -234,7 +226,6 @@ The `handleEvent` method allows the constructor to be used within an event liste
 
 `Zoomer.prototype.scroll` is where the magic will be happening. We first need to calculate the current position of the scroll relative the height of the page.
 
-    // triggered every time window scrolls
     Zoomer.prototype.scroll = function( event ) {
       // normalize scroll value from 0 to 1
       this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
@@ -246,14 +237,11 @@ We can take that `scrolled` value and use it for our scale value to zoom into th
 
 This value can be applied as a CSS transform. We need to set all the vendor specific CSS properties for `transform` with the `transformValue`.
 
-    // triggered every time window scrolls
     Zoomer.prototype.scroll = function( event ) {
       // normalize scroll value from 0 to 1
       this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
-
       var scale = Math.pow( 3, this.scrolled * this.levels ),
           transformValue = 'scale('+scale+')';
-
       this.content.style.WebkitTransform = transformValue;
       this.content.style.MozTransform = transformValue;
       this.content.style.OTransform = transformValue;
