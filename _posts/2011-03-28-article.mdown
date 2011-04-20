@@ -24,7 +24,10 @@ With the site for BeerCamp at SXSW 2011 ([2011.beercamp.com](http://2011.beercam
 
 [![BeerCamp at SXSW 2011](http://s3.amazonaws.com/ember/U9Zhuu3Vf2frBxrNrNsoldLp2N55Weq7_m.jpg)](http://2011.beercamp.com)
 
-In this tutorial, let's build a Zoomable User Interface into a simple page. We will do this by using CSS transforms for layout, then hi-jacking scrolling with JavaScript to manipulate the zoom.
+In this tutorial, let's build a Zoomable User Interface into a simple page. You will learn:
+
++ How to use CSS transforms to create a zoomable layout
++ How to use JavaScript to hi-jacking scrolling to manipulate the zoom
 
 Our example page lists the services of a web development shop. The five sections for our page are Web development, Front-end development, CSS, CSS3, and Transforms. The services listed range from the broad to the specific. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections. By placing one visual element inside another, you are visually communicating the  relationship between pieces of content. 
 
@@ -35,8 +38,6 @@ Our example page lists the services of a web development shop. The five sections
 <p><a href="demo1.html"><img src="http://i.imgur.com/53jXt.png" alt="ZUI Site Riot - Demo 1 - Basic Layout screenshot" style="width: 165px" /></a></p>
 <p><a href="http://s3.amazonaws.com/ember/OcgEEVgIZvBP1GVtQ7CaIbeL8u5Nosz9_o.png">View hi-res</a></p>
 </div></div>
-
-For the zoomable layout, we need to consider how each section will fit inside one another. I've chosen to use a ratio of 3:1 for the proportion between the current section and its subsequent section. This is a reasonable ratio for parent/child sizes as the parent will have enough room for content, and the child container will still be visible. The area of each section will be 900px x 540px so it fits within most browser windows. Subsequent sections will appear to be one-third the full size, 300px x 180px.
 
 The basic markup of the site will look like the following:
 
@@ -53,9 +54,9 @@ The basic markup of the site will look like the following:
       </div> <!-- #container -->
     </div> <!-- #wrap -->
 
-The first draft of the site has the content laid out in the typical vertical pattern. This version is necessary as this layout will be used by browsers that do not support CSS transforms or have JavaScript disabled. Users with less-capable browsers will still be able to consume the content. The rest of the effects will be built with progressive enhancement.  
+The first draft of the site has the content laid out in the typical vertical pattern. This version is necessary as this layout will be used by browsers that do not support CSS transforms or have JavaScript disabled. The rest of the effects will be built with progressive enhancement.
 
-You'll notice that each section has an empty space in the center of it.  This space has been reserved for the subsequent sections to fit inside it once CSS transforms are put in place.
+For the zoomable layout, we need to consider how each section will fit inside one another. I've chosen to use a ratio of 3:1 for the proportion between the current section and its subsequent section. This is a reasonable ratio for parent/child sizes as the parent will have enough room for content, and the child container will still be visible. The area of each section will be 900px x 540px so it fits within most browser windows. Subsequent sections will appear to be one-third the full size, 300px x 180px. You'll notice this space in the center of each section has been reserved for the subsequent sections to fit inside once CSS transforms are put in place.
 
 **See Demo 1 - Basic layout** [desandro.github.com/zui-site-riot/demo1.html](http://desandro.github.com/zui-site-riot/demo1.html)
 
