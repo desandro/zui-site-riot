@@ -30,13 +30,7 @@ In this tutorial, let's build a Zoomable User Interface into a simple page. We w
 + How to hi-jack scrolling to manipulate the zoom
 + How to add CSS transitions to make an impressive interaction
 
-Our example page lists the services of a web development shop. The services listed range from the broad to the specific. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections. By placing one visual element inside another, you are visually communicating the  relationship between pieces of content. The sections for our page are:
-
-1. Web development
-2. Front-end development
-3. CSS
-4. CSS3
-5. Transforms
+Our example page lists the services of a web development shop. The services listed range from the broad to the specific. This content is well suited for a zoomable layout, as the subsequent sections are smaller segments of the previous sections. By placing one visual element inside another, you are visually communicating the  relationship between pieces of content. The five sections for our page are Web development, Front-end development, CSS, CSS3, and Transforms.
 
 ## Basic layout
 
@@ -76,7 +70,6 @@ With the basic layout established, we can now start adding CSS transforms. Befor
 
 To scale each section inside one another, they first need to occupy the same space.  This can be done with absolute positioning.
 
-    /* absolute positioning */
     .csstransforms #container { position: relative; }
     .csstransforms #content { position: absolute; }
     .csstransforms section { position: absolute; }
@@ -139,7 +132,6 @@ Now we need to build a mechanism to enable the user the zoom in. To zoom in to a
 
 The scale to view the third level would be `3 ^ 2 = 9`. For the fourth level, the scale would be `3 ^ 3 = 27`.
 
-    /* view #css3, level index 3 = 3 ^ 3 = 27 */
     .csstransforms #content {
       -webkit-transform: scale(27);
          -moz-transform: scale(27);
@@ -157,8 +149,6 @@ See [Demo 3 - Fixed zoom](demo3.html)
 [![Demo 3 - Fixed zoom](http://s3.amazonaws.com/ember/zCa4GlWMxTB3BA36GADGIFDGNSm5v2sK_o.png)](demo3.html)
 
 
-
-
 ## Scroll
 
 Leveraging window scrolling is a natural convenient interaction to hook zooming into.  Along side clicking and pointing, scrolling is a natural interaction that anyone with a mouse or keyboard uses.
@@ -174,7 +164,6 @@ In the CSS, set an arbitrary height on `#scroller`.  `4000px` works, as an appro
 
 But we don't want the content to scroll with the rest of the page, so we can use fixed positioning to fix the actual content in its same place.
 
-    /* prevent content from scrolling */
     #wrap { 
       position: fixed; 
       width: 100%;
@@ -197,9 +186,7 @@ As all this script will only need to run if the browser supports CSS transforms,
 
     (function(){
       // only proceed if CSS transforms are supported
-      if ( !Modernizr.csstransforms ) {
-        return;
-      }
+      if ( !Modernizr.csstransforms ) { return; }
       // CSS transforms supported, continue...
     })();
 
@@ -224,21 +211,19 @@ The `handleEvent` method allows the constructor to be used as an event listener,
       }
     };
 
-`Zoomer.prototype.scroll` is where the magic will be happening. We first need to calculate the current position of the scroll relative the height of the page.
+`Zoomer.prototype.scroll` is where the magic will be happening. We first need to calculate the current position of the scroll relative the height of the page. `this.scrolled` is a normalized decimal value, from 0 to 1, that represents the position of the scrolled page.
 
     Zoomer.prototype.scroll = function( event ) {
-      // normalize scroll value from 0 to 1
       this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
     };
 
-We can take that `scrolled` value and use it for our scale value to zoom into the content.  We can use the same math we applied with the CSS above, except we are now using a percentage.  The percentage goes from 0 to 1, so we need to multiply it by the zero-based number of sections.
+We can take that `scrolled` value and use it for our scale value to zoom into the content.  We can use the same math we applied with the CSS above, except we are now using a percentage.  Its value goes from 0 to 1, so we need to multiply it by the zero-based number of sections.
 
     zoomScale = ratio ^ ( percentage * levels )
 
 This value can be applied as a CSS transform. We need to set all the vendor specific CSS properties for `transform` with the `transformValue`.
 
     Zoomer.prototype.scroll = function( event ) {
-      // normalize scroll value from 0 to 1
       this.scrolled = window.scrollY / ( this.docHeight - window.innerHeight );
       var scale = Math.pow( 3, this.scrolled * this.levels ),
           transformValue = 'scale('+scale+')';
@@ -255,10 +240,9 @@ All that's left is to initialize a new `Zoomer` instance, pass in the `#content`
           // init Zoomer constructor
           ZUI = new Zoomer( content );
     }
-
     window.addEventListener( 'DOMContentLoaded', init, false );
 
-Now the content zooms when you scroll. Whooaaaaaaaaa.
+Now the content zooms when you scroll. And everybody goes "Whooaaaaaaaaa."
 
 See [Demo 4 - Scroll to zoom](demo4.html)
 
